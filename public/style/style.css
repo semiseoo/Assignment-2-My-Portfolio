@@ -1,0 +1,57 @@
+.navbar {
+    background-color: #333;
+    border-bottom: 3px solid #ffa500;
+}
+
+.navbar .navbar-brand {
+    color: #fff;
+    font-weight: bold;
+}
+
+.navbar .nav-link:hover {
+    color: #ffa500;
+    text-decoration: none;
+}
+
+header {
+    text-align: center;
+    background: linear-gradient(45deg, #ffa500, #ff4500);
+    color: white;
+    padding: 50px 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+header h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+header p {
+    font-size: 1.5rem;
+}
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: lightblue;
+    color: #333;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #333;
+    color: white;
+    font-size: 14px;
+}
+
+footer a {
+    color: #ffa500;
+    text-decoration: none;
+
+}
+
+footer a:hover {
+    text-decoration: underline;
+}

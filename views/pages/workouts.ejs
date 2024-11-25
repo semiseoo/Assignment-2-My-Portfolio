@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../partials/header') %>
+
+<body>
+    <%- include('../partials/navbar') %>
+
+    <main class="container my-4">
+        <h1 class = "text-center"> Your Workouts <i class="fas fa-running"></i></h1>
+        <p class = "text-center"> Track your fitness progress </p>
+
+        <!--list of workouts-->
+        <div class="workout-list mt-4">
+            <h3> Workouts </h3>
+            <ul class = "list-group">
+                <% if (workouts && workouts.length > 0) { %>
+                    <% workouts.forEach((workout) => { %>
+                        <li class = "list-group-item d-flex justify-content-between align-items-center">
+                            <strong><%= workout.name %> </strong>: <%= workout.description %>
+                            <span class="badge bg-primary"><%= workout.duration %> mins </span>
+                            <a href="/workouts/edit/<%= workout._id %>" class = "btn btn-warning btn-sm ms-2"> Edit </a>
+                            <form action="/workouts/delete/<%= workout._id %>?_method=DELETE" method="POST" class="d-inline ms-2" onsubmit="return confirmDelete()">
+                                <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                            </form>
+                        </li>
+                    <% }); %>
+                <% } else { %>
+                    <li class="list-group-item"> No workouts available </li>
+                <% } %>
+            </ul> 
+        </div>
+<!--new workouts form-->
+        <div class = "mt-5">
+            <h3>Add a new workout </h3>
+            <form action = "/workouts/create" method = "POST">
+                <div class="mb-3">
+                    <label for="name" class = "form-label"> workout name</label>
+                    <input type="text" id = "name" name = "name" class="form-control" required>
+                </div>
+                <div class = "mb-3">
+                    <label for ="description" class="form-label"> Description</label>
+                    <textarea id ="description" name="description" class ="form-control" required></textarea>
+                </div>
+                <div class ="mb-3">
+                    <label for ="duration" class = "form-label"> Duration (in mins)</label>
+                    <input type ="number" id ="duration" name ="duration" class ="form-control" required>
+                </div>
+                <button type ="submit" class ="btn btn-success">Add Workout</button>
+            </form>
+        </div>
+    </main>
+    <%- include('../partials/footer') %>
+    <script>
+        function confirmDelete() {
+            return confirm("do you want to delete this workout?");
+        }
+    </script>
+</body>
+</html>
